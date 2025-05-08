@@ -62,22 +62,6 @@ export const constantRoutes: RouteRecordRaw[] = [
     ]
   },
   {
-    path: "/unocss",
-    component: Layouts,
-    redirect: "/unocss/index",
-    children: [
-      {
-        path: "index",
-        component: () => import("@/views/unocss/index.vue"),
-        name: "UnoCSS",
-        meta: {
-          title: "UnoCSS",
-          svgIcon: "unocss"
-        }
-      }
-    ]
-  },
-  {
     path: "/link",
     meta: {
       title: "外链",
@@ -244,6 +228,22 @@ export const constantRoutes: RouteRecordRaw[] = [
         name: "UseWatermark",
         meta: {
           title: "useWatermark"
+        }
+      }
+    ]
+  },
+  {
+    path: "/service",
+    component: Layouts,
+    redirect: "/service/index",
+    children: [
+      {
+        path: "index",
+        component: () => import("@/views/service/index.vue"),
+        name: "服务项目",
+        meta: {
+          title: "服务项目",
+          svgIcon: "unocss"
         }
       }
     ]
