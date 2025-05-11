@@ -1,6 +1,7 @@
 import { request } from "@/utils/service"
 import type * as Service from "./types/service"
 
+import "../../mock/index.js"
 /** 增 */
 export function createServiceApi(data: Service.CreateOrUpdateServiceData) {
   return request({
