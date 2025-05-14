@@ -9,7 +9,7 @@ import electron from "vite-electron-plugin"
 import { loadViteEnv } from "vite-electron-plugin/plugin"
 import { rmSync } from "fs"
 import pkg from "./package.json"
-
+import optimizer from 'vite-plugin-optimizer'
 /** 清空 dist */
 rmSync("dist", { recursive: true, force: true })
 
@@ -104,7 +104,10 @@ export default ({ mode }: ConfigEnv): UserConfigExport => {
           },
           loadViteEnv()
         ]
-      })
+      }),
+      optimizer({
+        electron: `const { ipcRenderer } = require('electron'); export { ipcRenderer };`
+      }),
     ],
     css: {
       postcss: {

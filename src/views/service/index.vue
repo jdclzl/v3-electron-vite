@@ -11,6 +11,20 @@ import type {
   VxeFormProps
 } from "vxe-table"
 import { deleteServiceApi, getServiceApi } from "@/api/service"
+import { ipcRenderer } from "electron"
+
+// 获取数据库中的所有待办事项
+const getTodoList = () => {
+  // 获取数据库数据
+  ipcRenderer
+    .invoke("db_query", "SELECT * FROM todo_list;")
+    .then((res) => {
+      console.log("getTodoList", res)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
 
 defineOptions({
   // 命名当前组件
@@ -149,6 +163,7 @@ const xGridOpt = reactive<VxeGridProps<RowVo>>({
         let total = 0
         let result: RowVo[] = []
         try {
+          getTodoList()
           /** 接口参数 */
           const params = {
             name: form.name || undefined,

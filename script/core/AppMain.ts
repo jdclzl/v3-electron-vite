@@ -11,6 +11,9 @@ import AppMenu from "./AppMenu"
 import AppTray from "./AppTray"
 import WinMain from "./WinMain"
 
+// database
+import { initDatabase } from "../database/index"
+
 export default class AppMain {
   // 打印日志
   private static printf(...params: any[]) {
@@ -43,6 +46,9 @@ export default class AppMain {
       // 主窗口
       WinMain.create()
       WinMain.ipcListening()
+
+      // 初始化数据库
+      initDatabase()
     })
 
     /** 应用被激活 */
